@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibnu Sofyan | Portfolio TJKT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ================= RESET & VARIABLES ================= */
+        :root {
+            --bg-primary: #050505;
+            --bg-secondary: #0a0a0a;
+            --bg-card: #111111;
+            --neon-green: #00ff41;
+            --dark-green: #003b0f;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-green); border-radius: 10px; }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+        }
+
+        .logo span { color: var(--text-main); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 400;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            gap: 50px;
+        }
+
+        .hero-text h3 {
+            font-family: 'Fira Code', monospace;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: var(--neon-green);
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+        }
+
+        /* Terminal Box */
+        .terminal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--dark-green);
+            border-radius: 10px;
+            width: 450px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--dark-green);
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .terminal-body .prompt { color: var(--neon-green); }
+        .terminal-body .command { color: #fff; }
+        .terminal-body .output { color: var(--text-muted); }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--neon-green);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* ================= SECTIONS GENERAL ================= */
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--neon-green);
+            text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ================= ABOUT ================= */
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--dark-green), var(--bg-secondary));
+            border: 2px solid var(--neon-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.2);
+            flex-shrink: 0;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--neon-green);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* ================= SKILLS ================= */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .skill-card:hover::before { left: 100%; }
+
+        .skill-card:hover {
+            border-color: var(--neon-green);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5));
+        }
+
+        .skill-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ================= CONTACT ================= */
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-container p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer span { color: var(--neon-green); }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
+            .hero-text p { margin: 0 auto 30px; }
+            .terminal { width: 100%; max-width: 450px; }
+            .about-content { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            section { padding: 80px 5%; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">&lt;<span>Ibnu</span>/&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h3>> _init_system()</h3>
+            <h1>Halo, Saya <span>Ibnu Sofyan</span></h1>
+            <p>Siswa Kelas 11 TJKT 1 SMKN 1 Brebes.Menguasai dalam dunia Jaringan Komputer, Routing, dan Cyber Security.</p>
+            <a href="#contact" class="btn">> Hubungi_Saya</a>
+        </div>
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="terminal-body">
+                <div><span class="prompt">ibnu@smkn1brebes:~$</span> <span class="command">whoami</span></div>
+                <div class="output">ibnu_sofyan</div>
+                <div><span class="prompt">ibnu@smkn1brebes:~$</span> <span class="command">cat profile.txt</span></div>
+                <div class="output">Kelas: 11 TJKT 1</div>
+                <div class="output">Sekolah: SMKN 1 Brebes</div>
+                <div class="output">Status: <span style="color: var(--neon-green);">Learning Network Engineering</span></div>
+                <div><span class="prompt">ibnu@smkn1brebes:~$</span> <span class="cursor"></span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <h2 class="section-title">Tentang <span>Saya</span></h2>
+        <div class="about-content">
+            <div class="about-img">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+            <div class="about-text">
+                <h3>Network Engineering Enthusiast</h3>
+                <p>
+                    Saya Ibnu Sofyan, siswa kelas 11 jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT) 1 di SMKN 1 Brebes. 
+                    Saya memiliki ketertarikan yang besar terhadap cara kerja jaringan komputer, konfigurasi router & switch, 
+                    hingga administrasi server Linux.
+                </p>
+                <p>
+                    Bagi saya, jaringan adalah tentang bagaimana menghubungkan dunia. Saya selalu antusias untuk mempelajari 
+                    teknologi baru, memecahkan masalah konektivitas, dan membangun infrastruktur jaringan yang aman dan efisien.
+                </p>
+                <a href="#skills" class="btn">> Lihat_Skill</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <h2 class="section-title">Keahlian <span>& Tools</span></h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-network-wired"></i>
+                <h4>Routing & Switching</h4>
+                <p>Konfigurasi Mikrotik, Cisco, VLAN, OSPF, dan Static/Dynamic Routing.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-linux"></i>
+                <h4>Linux Administration</h4>
+                <p>Manajemen Server Ubuntu/Debian, CLI, DNS Server, dan Web Server.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Network Security</h4>
+                <p>Dasar-dasar keamanan jaringan, Firewall, dan Network Monitoring.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-ethernet"></i>
+                <h4>Fiber Optic & Crimping</h4>
+                <p>Instalasi kabel UTP, Fiber Optic, Splicing, dan ODP/ODC.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <h2 class="section-title">Hubungi <span>Saya</span></h2>
+        <div class="contact-container">
+            <p>Tertarik untuk berkolaborasi dalam proyek jaringan atau sekadar berdiskusi tentang teknologi? Jangan ragu untuk menghubungi saya!</p>
+            <a href="mailto:ibnusofyanxbrebes01@gmail.com" class="btn">> Kirim_Pesan</a>
+            <div class="social-links">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="+620895370232138" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026<span>Ibnu Sofyan</span> | 11 TJKT 1 - SMKN 1 Brebes | Built with <span>&lt;code&gt;</span> and <span>&lt;coffee&gt;</span></p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple scroll animation for skill cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(5, 5, 5, 0.95)';
+            } else {
+                nav.style.background = 'rgba(5, 5, 5, 0.85)';
+            }
+        });
+    </script>
+</body>
+</html>
