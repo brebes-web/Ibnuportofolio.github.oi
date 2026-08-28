@@ -257,6 +257,10 @@
         }
 
         .skill-card {
+            display: block;     
+            text-decoration: none;   
+            color: inherit;         
+            cursor: pointer;        
             background: var(--bg-card);
             border: 1px solid #222;
             border-radius: 15px;
@@ -292,6 +296,14 @@
             margin-bottom: 20px;
             filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5));
         }
+
+        .skill-card img {
+            width: 64px;              /* sesuaikan dengan ukuran ikon (3rem ≈ 48px) */
+            height: 64px;
+            object-fit: contain;      /* gambar tidak gepeng/terpotong */
+            margin-bottom: 20px;      /* jarak yang sama  dengan .skill-card i */
+            filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.5)); /* efek neon hijau */
+}
 
         .skill-card h4 {
             font-size: 1.3rem;
@@ -437,27 +449,39 @@
     <section id="skills">
         <h2 class="section-title">Keahlian <span>& Tools</span></h2>
          <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-network-wired"></i>
-                <h4>Routing & Switching</h4>
-                <p>Konfigurasi Mikrotik, Cisco, VLAN, OSPF, dan Static/Dynamic Routing.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fab fa-linux"></i>
-                <h4>Linux Administration</h4>
-                <p>Manajemen Server Ubuntu/Debian, CLI, DNS Server, dan Web Server.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-shield-alt"></i>
-                <h4>Network Security</h4>
-                <p>Dasar-dasar keamanan jaringan, Firewall, dan Network Monitoring.</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-ethernet"></i>
-                <h4>Fiber Optic & Crimping</h4>
-                <p>Instalasi kabel UTP, Fiber Optic, Splicing, dan ODP/ODC.</p>
-            </div>
-        </div>
+  <!-- Kartu 1 -->
+  <a href="https://drive.google.com/drive/folders/11jl2Zk88FRmhW4FrMtLKky5H-Umhmagw"
+     target="_blank" class="skill-card">
+    <i class="fas fa-network-wired"></i>
+    <h4>Routing & Switching</h4>
+    <p>Konfigurasi Mikrotik, Cisco, VLAN, OSPF, dan Static/Dynamic Routing.</p>
+  </a>
+
+  <!-- Kartu 2: contoh kartu dengan GAMBAR (img) -->
+  <a href="https://drive.google.com/drive/folders/18uiuuzXemt4aat2FmPrDBM2M-7X4ROus"
+     target="_blank" class="skill-card">
+    <img src="images/linux.png" alt="Linux" class="skill-img">
+    <h4>Linux Administration</h4>
+    <p>Manajemen Server Ubuntu/Debian, CLI, DNS Server, dan Web Server.</p>
+  </a>
+
+  <!-- Kartu 3: ganti dengan link Drive Anda -->
+  <a href="https://drive.google.com/drive/folders/1AAwzUqsg9Yg2p06qy9OhwWv8whGpXdRt"
+     target="_blank" class="skill-card">
+    <i class="fas fa-shield-alt"></i>
+    <h4>Network Security</h4>
+    <p>Dasar-dasar keamanan jaringan, Firewall, dan Network Monitoring.</p>
+  </a>
+
+  <!-- Kartu 4: ganti dengan link Drive Anda -->
+  <a href="https://drive.google.com/drive/folders/1lY0867HIZQVuuxfa9OxP8F6cq0jSiWeT"
+     target="_blank" class="skill-card">
+    <i class="fas fa-ethernet"></i>
+    <h4>Fiber Optic & Crimping</h4>
+    <p>Instalasi kabel UTP, Fiber Optic, Splicing, dan ODP/ODC.</p>
+  </a>
+</div>
+
     </section>
 
     <!-- CONTACT SECTION -->
